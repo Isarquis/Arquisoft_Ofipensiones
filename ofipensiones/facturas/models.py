@@ -1,6 +1,8 @@
 from django.db import models
 from estudiante.models import Estudiante
-class Facturacion(models.Model):
+
+class Factura(models.Model):
+    id=models.AutoField(primary_key=True)
     estudiante=models.ForeignKey(Estudiante, on_delete=models.CASCADE,default=None)
     saldo=models.FloatField()
     fecha=models.DateTimeField(auto_now_add=True)
@@ -8,5 +10,5 @@ class Facturacion(models.Model):
     cuenta_destino=models.CharField(max_length=15)
     
     def __str__(self) -> str:
-        return '%s' % (self.estudiante.nombre, self.saldo, self.fecha, self.cuenta_origen, self.cuenta_destino)
-# Create your models here.
+        return '%s %s %s' % (self.id, self.estudiante.nombre, self.fecha)
+    
