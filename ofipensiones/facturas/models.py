@@ -11,4 +11,4 @@ class Factura(models.Model):
     
     def __str__(self) -> str:
         return '%s %s %s' % (self.id, self.estudiante.nombre, self.fecha)
-    
+   
