@@ -19,5 +19,5 @@ from . import views
 urlpatterns = [
     path('', views.base),
     path('admin/', admin.site.urls),
-    path('facturas/',include('facturas.urls') )
+    path('facturas/',include('facturas.urls') ),
 ]
