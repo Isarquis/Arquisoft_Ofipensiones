@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-w&*y7kwk%jn3di2j-2uex76_ky^s+by$8w+!eh_3g86tp4c*9b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS =['35.238.49.120','*']
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'ofipensiones.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'ofipensiones', 'Templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,8 +79,12 @@ WSGI_APPLICATION = 'ofipensiones.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ofipensionesdb',
+        'USER':'admin',
+        'PASSWORD':'1234',
+        'HOST':'10.128.0.2',
+        'PORT':'',
     }
 }
 
