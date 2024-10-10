@@ -9,4 +9,6 @@ def factura_view(request, id):
     if request.method== 'GET':
         factura_dto=lf.get_factura(id)
         factura=serializers.serialize('json', [factura_dto])
-        return render(request, 'facturas/factura_detail.html', {'factura_id': id})
+        return HttpResponse(factura, 'application/json')
+        
+            
