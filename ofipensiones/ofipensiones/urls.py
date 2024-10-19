@@ -20,4 +20,6 @@ urlpatterns = [
     path('', views.base),
     path('admin/', admin.site.urls),
     path('facturas/',include('facturas.urls') ),
+    path('recibo/',include('recibo.urls') ),
+
 ]
