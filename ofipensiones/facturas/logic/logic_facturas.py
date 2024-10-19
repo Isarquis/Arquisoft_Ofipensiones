@@ -4,6 +4,11 @@ def get_factura(var_pk):
     factura=Factura.objects.get(pk=var_pk)
     return factura
 
+def get_recibo(var_pk):
+    recibo = Recibo.objects.get(pk=var_pk)
+    facturas = recibo.factura_set.all()  
+    return recibo, facturas
+
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 """from models import Factura
