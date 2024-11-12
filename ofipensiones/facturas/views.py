@@ -16,6 +16,10 @@ def factura_view(request, id):
 
     
 def facturas_view(request, id):
-    if request.method == 'GET':
-        factura_dto=lf.delete_factura(id)
-        return HttpResponse(factura_dto)
+    role= getRole(request)
+    if role=="Gerente":
+        if request.method == 'GET':
+            factura_dto=lf.delete_factura(id)
+            return HttpResponse(factura_dto)
+    else:
+        return HttpResponse("Unauthorized User")
