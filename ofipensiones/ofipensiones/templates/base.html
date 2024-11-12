@@ -47,6 +47,23 @@
             });
         </script>
 
+        <form id="facturaDeleteForm" method="POST">
+            {% csrf_token %}
+            <h3>Ingrese la factura a eliminar</h3>
+            <label for="ID">ID</label>
+            <input type="text" id="facturaId" name="facturaId" required>
+            <br>
+            <input type="submit" value="Buscar">
+        </form>
+        
+        <script>
+            document.getElementById('facturaDeleteForm').addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                var facturaId = document.getElementById('facturaId').value; 
+                window.location.href = '/facturas/delete/' + facturaId;  // Cambia la URL al enviar el formulario
+            });
+        </script>
+
     </body>
     <br>
     <br>

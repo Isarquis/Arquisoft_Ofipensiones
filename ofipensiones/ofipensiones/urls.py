@@ -21,5 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('facturas/',include('facturas.urls') ),
     path('recibo/',include('recibo.urls') ),
+    path(r'', include('social_django.urls')),
+    path(r'', include('django.contrib.auth.urls')),
 
 ]
