@@ -14,3 +14,11 @@ def delete_factura(var_pk):
          return "Factura eliminada"
     except:
         return "Factura no existe"
+
+def get_facturas(cod_estudiante):
+    try:
+        facturas= Factura.objects.get()
+        return facturas
+    
+    except:
+        return "Estudiante no existe"
