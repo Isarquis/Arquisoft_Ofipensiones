@@ -28,6 +28,18 @@
                     </li>
                 </ul>
             </div>
+<form class="form-inline my-2 my-lg-0">
+                {% if user.is_authenticated %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="font-size:120%" class="nav-link">{{ user.username }}</a></li>
+                    <li><a style="font-size:120%; padding-right:20px" class="nav-link" href="/logout">Log out</a></li>
+                </ul>
+                {% else %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a style="font-size:120%; padding-right:20px" class="navbar-link" href="/login/auth0">Login</a></li>
+                </ul>
+                {% endif %}
+              </form>
         </nav>
 
         <form id="facturaForm" method="POST">
@@ -51,7 +63,7 @@
             {% csrf_token %}
             <h3>Ingrese la factura a eliminar</h3>
             <label for="ID">ID</label>
-            <input type="text" id="facturaId" name="facturaId" required>
+            <input type="text" id="facturaDId" name="facturaDId" required>
             <br>
             <input type="submit" value="Buscar">
         </form>
@@ -59,8 +71,8 @@
         <script>
             document.getElementById('facturaDeleteForm').addEventListener('submit', function(e) {
                 e.preventDefault(); 
-                var facturaId = document.getElementById('facturaId').value; 
-                window.location.href = '/facturas/delete/' + facturaId;  // Cambia la URL al enviar el formulario
+                var facturaDId = document.getElementById('facturaDId').value; 
+                window.location.href = '/facturas/delete/' + facturaDId;  // Cambia la URL al enviar el formulario
             });
         </script>
 
