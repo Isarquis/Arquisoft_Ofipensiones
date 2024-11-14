@@ -10,5 +10,5 @@ class Factura(models.Model):
     cuenta_destino=models.CharField(max_length=15)
     
     def __str__(self) -> str:
-        return '%s %s %s' % (self.id, self.estudiante.nombre, self.fecha)
+        return '%s %s %s' % (self.id, self.estudiante.codigo, self.fecha)
    
