@@ -20,7 +20,7 @@ def factura_view(request, id):
 def facturas_view(request, id):
     role= getRole(request)
     if role=="Gerente":
-        codigoEstudiante = lf.get_factura(id).estudiante.codigo
+        codigoEstudiante = lf.get_factura(id).estudiante
         colegioGerente = lc.get_colegio(request.user['email']) 
         colegioEstudiante = le.get_colegioEstudiante(codigoEstudiante)
         if colegioGerente.codigo == colegioEstudiante.codigo:
