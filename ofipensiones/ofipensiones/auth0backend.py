@@ -31,7 +31,8 @@ class Auth0(BaseOAuth2):
         return {'username': userinfo['nickname'],
                 'first_name': userinfo['name'],
                 'picture': userinfo['picture'],
-                'user_id': userinfo['sub']}
+                'user_id': userinfo['sub'],
+                'email':userinfo['email']}
         
 def getRole(request):
     user = request.user
