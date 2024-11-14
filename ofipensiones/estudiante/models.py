@@ -4,7 +4,7 @@ class Estudiante(models.Model):
     nombre=models.CharField(max_length=60)    
     grado=models.IntegerField()
     colegio=models.ForeignKey(Colegio, on_delete=models.CASCADE, default=None)
-    correo=models.CharField(max_length=60)
+    correo=models.CharField(max_length=60,null=True,blank=True)
     
     def __str__(self) -> str:
         return '%s' % (self.nombre)

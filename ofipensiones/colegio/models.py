@@ -5,6 +5,6 @@ class Colegio(models.Model):
     cuenta=models.IntegerField()
     direccion=models.CharField(max_length=30)
     codigo=models.AutoField(primary_key=True)
-    correo=models.CharField(max_length=60)
+    correo=models.EmailField(max_length=60,null=True,blank=True)
     def __str__(self) -> str:
         return super().__str__()
