@@ -17,7 +17,7 @@ def delete_factura(var_pk):
 
 def get_facturas(cod_estudiante):
     try:
-        facturas= Factura.objects.filter(estudiante__id=cod_estudiante)
+        facturas= Factura.objects.filter(estudiante__codigo=cod_estudiante)
         return facturas
     
     except:
