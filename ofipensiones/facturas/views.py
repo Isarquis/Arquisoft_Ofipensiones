@@ -33,9 +33,18 @@ def facturas_view(request, id):
         
     else:
         return HttpResponse("Unauthorized User")
-    
+
 def facturas_estudiante_view(request, cod):
-    if request.method=='GET':
-        facturas_dto=lf.get_facturas(cod)
-        return HttpResponse(facturas_dto, 'application/json')
+    role=getRole(request)
+    if role=="Estudiante":
+        if request.method=='GET':
+            
+            facturas=lf.get_facturas(cod)
+            if facturas[0].estudiante.correo==request.user.correo:
+                return HttpResponse(facturas, 'application/json')
+            else:
+                return HttpResponse("No tiene acceso")
+    else:
+        return HttpResponse("No tiene acceso")
+    
     
