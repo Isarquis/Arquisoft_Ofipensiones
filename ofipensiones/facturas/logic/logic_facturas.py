@@ -21,4 +21,4 @@ def get_facturas(cod_estudiante):
         return facturas
     
     except:
-        return "Estudiante no existe"
+        return "Estudiante no tiene factura"

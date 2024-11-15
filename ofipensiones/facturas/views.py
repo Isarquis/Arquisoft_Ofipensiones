@@ -22,12 +22,12 @@ def facturas_view(request, id):
     if role=="Gerente":
         codigoEstudiante = lf.get_factura(id).estudiante
         print(codigoEstudiante)
-        colegioGerente = lc.get_colegio(request.user.email) 
-        colegioEstudiante = le.get_colegioEstudiante(codigoEstudiante)
+        colegioGerente = lc.get_colegio(request.user.email)
+        colegioEstudiante = le.get_colegioEstudiante(codigoEstudiante.codigo)
         if colegioGerente.codigo == colegioEstudiante.codigo:
             if request.method == 'GET':
-                facturas_dto=lf.get_facturas(id)
-                return HttpResponse(facturas_dto, 'application/json')
+                lf.delete_factura(id)
+                return HttpResponse("borro su bendita factura")
         else:
             return HttpResponse("Gerente de otro colegio")
         
