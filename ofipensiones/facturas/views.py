@@ -40,7 +40,7 @@ def facturas_estudiante_view(request, cod):
         if request.method=='GET':
             
             facturas=lf.get_facturas(cod)
-            if facturas[0].estudiante.correo==request.user.correo:
+            if facturas[0].estudiante.correo==request.user.email:
                 return HttpResponse(facturas, 'application/json')
             else:
                 return HttpResponse("No tiene acceso")
