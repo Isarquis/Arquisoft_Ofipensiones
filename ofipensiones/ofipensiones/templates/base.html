@@ -75,6 +75,23 @@
                 window.location.href = '/facturas/delete/' + facturaDId;  // Cambia la URL al enviar el formulario
             });
         </script>
+        </script>
+        <form id="EstudianteForm" method="GET">
+            {% csrf_token %}
+            <h3>Ingrese el código del estudiante </h3>
+            <label for="ID">ID</label>
+            <input type="text" id="estudianteId" name="estudianteId" required>
+            <br>
+            <input type="submit" value="Buscar">
+        </form>
+        
+        <script>
+            document.getElementById('EstudianteForm').addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                var estudianteId = document.getElementById('estudianteId').value; 
+                window.location.href = '/facturas/' + estudianteId;  // Cambia la URL al enviar el formulario
+            });
+        </script>
 
     </body>
     <br>
