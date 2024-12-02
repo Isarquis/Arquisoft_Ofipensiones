@@ -199,7 +199,7 @@ resources:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
     - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      networkIP: 10.128.0.87
+      networkIP: 10.128.0.84
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
@@ -222,6 +222,7 @@ resources:
           sudo git clone https://github.com/ISIS2503/ISIS2503-Microservices-AppDjango.git
           cd ISIS2503-Microservices-AppDjango/places
           sudo python3.12 -m pip install -r requirements.txt
+          
 - name: msd-facturas-ms
   type: compute.v1.instance
   properties:
@@ -272,7 +273,7 @@ resources:
         sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
     - network: https://www.googleapis.com/compute/v1/projects/<id-proyecto>/global/networks/default
-      networkIP: 10.128.0.85
+      networkIP: 10.128.0.87
       accessConfigs:
       - name: External NAT
         type: ONE_TO_ONE_NAT
