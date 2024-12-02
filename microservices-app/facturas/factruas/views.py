@@ -8,11 +8,11 @@ from django.conf import settings
 import requests
 import json
 
-def check_variable(data):
+def check_usuarios(data):
     r = requests.get(settings.PATH_VAR, headers={"Accept":"application/json"})
-    variables = r.json()
-    for variable in variables:
-        if data["variable"] == variable["id"]:
+    usuarioss = r.json()
+    for usuarios in usuarioss:
+        if data["usuarios"] == usuarios["id"]:
             return True
     return False
 
@@ -26,23 +26,23 @@ def get_institucion_id(data):
 
 def FacturasList(request):
     queryset = Facturas.objects.all()
-    context = list(queryset.values('id', 'variable', 'value', 'unit', 'place', 'dateTime'))
+    context = list(queryset.values('id', 'usuarios', 'value', 'unit', 'institucion', 'dateTime'))
     return JsonResponse(context, safe=False)
 
 def FacturasCreate(request):
     if request.method == 'POST':
         data = request.body.decode('utf-8')
         data_json = json.loads(data)
-        if check_variable(data_json):
+        if check_usuarios(data_json):
             Facturas = Facturas()
-            Facturas.variable = data_json['variable']
+            Facturas.usuarios = data_json['usuarios']
             Facturas.value = data_json['value']
             Facturas.unit = data_json['unit']
-            Facturas.place = data_json['place']
+            Facturas.institucion = data_json['institucion']
             Facturas.save()
             return HttpResponse("successfully created Facturas")
         else:
-            return HttpResponse("unsuccessfully created Facturas. Variable or place does not exist")
+            return HttpResponse("unsuccessfully created Facturas. usuarios or institucion does not exist")
 
 def FacturassCreate(request):
     if request.method == 'POST':
@@ -50,15 +50,15 @@ def FacturassCreate(request):
         data_json = json.loads(data)
         Facturas_list = []
         for Facturas in data_json:
-                    if check_variable(Facturas) == True:
+                    if check_usuarios(Facturas) == True:
                         db_Facturas = Facturas()
-                        db_Facturas.variable = Facturas['variable']
+                        db_Facturas.usuarios = Facturas['usuarios']
                         db_Facturas.value = Facturas['value']
                         db_Facturas.unit = Facturas['unit']
-                        db_Facturas.place = Facturas['place']
+                        db_Facturas.institucion = Facturas['institucion']
                         Facturas_list.append(db_Facturas)
                     else:
-                        return HttpResponse("unsuccessfully created Facturas. Variable or place does not exist")
+                        return HttpResponse("unsuccessfully created Facturas. usuarios or institucion does not exist")
         
         Facturas.objects.bulk_create(Facturas_list)
         return HttpResponse("successfully created Facturass")
