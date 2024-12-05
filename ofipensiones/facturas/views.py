@@ -6,6 +6,8 @@ from django.views.decorators.csrf import csrf_exempt
 from ofipensiones.auth0backend import getRole
 from colegio.logic import logic_colegios as lc
 from estudiante.logic import logic_estudiante as le
+from django.core.serializers import serialize
+from django.http import JsonResponse
 @csrf_exempt
 def factura_view(request, id):
     if request.method== 'GET':
@@ -41,7 +43,8 @@ def facturas_estudiante_view(request, cod):
             
             facturas=lf.get_facturas(cod)
             if facturas[0].estudiante.correo==request.user.email:
-                return HttpResponse(facturas, 'application/json')
+                facturas1= serialize('json', facturas)
+                return HttpResponse(facturas1,'application/json')
             else:
                 return HttpResponse("No tiene acceso")
     else:

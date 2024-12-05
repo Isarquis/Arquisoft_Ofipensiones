@@ -10,7 +10,7 @@ def get_colegioEstudiante(var_pk):
         return None
     
 
-def get_estudiante(var_pk):
+def get_estudiantes(var_pk):
     try:
         estudiante=Estudiante.objects.get(pk=var_pk)
         return estudiante

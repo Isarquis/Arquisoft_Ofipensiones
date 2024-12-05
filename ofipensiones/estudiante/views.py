@@ -8,13 +8,13 @@ from .logic import logic_estudiante as le
 
 
 @csrf_exempt
-def estudiantes_estudiante_view(request, cod):
+def estudiantes_estudiante_view(request, id):
     role=getRole(request)
     if role=="Estudiante":
         if request.method=='GET':
             
-            estudiantes=le.get_estudiantes(cod)
-            if estudiantes[0].estudiante.correo==request.user.email:
+            estudiantes=le.get_estudiantes(id)
+            if estudiantes.correo==request.user.email:
                 return HttpResponse(estudiantes, 'application/json')
             else:
                 return HttpResponse("No tiene acceso")
