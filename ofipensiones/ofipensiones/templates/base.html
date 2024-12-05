@@ -92,6 +92,24 @@
                 window.location.href = '/facturas/totalfacturas/' + estudianteId;  // Cambia la URL al enviar el formulario
             });
         </script>
+        
+
+        <form id="EstudianteForm1" method="GET">
+            {% csrf_token %}
+            <h3>Ingrese el código del estudiante </h3>
+            <label for="ID">ID</label>
+            <input type="text" id="estudianteId1" name="estudianteId1" required>
+            <br>
+            <input type="submit" value="Buscar">
+        </form>
+        
+        <script>
+            document.getElementById('EstudianteForm1').addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                var estudianteId1 = document.getElementById('estudianteId1').value; 
+                window.location.href = '/estudiantes/' + estudianteId1;  // Cambia la URL al enviar el formulario
+            });
+        </script>
 
     </body>
     <br>

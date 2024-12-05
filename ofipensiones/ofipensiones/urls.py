@@ -23,5 +23,6 @@ urlpatterns = [
     path('recibo/',include('recibo.urls') ),
     path(r'', include('social_django.urls')),
     path(r'', include('django.contrib.auth.urls')),
+    path('estudiantes/',include('estudiante.urls') ),
 
 ]
