@@ -1,15 +1,6 @@
 _format_version: "2.1"
 
 services:
-  - name: instituciones_service
-    host: instituciones_upstream
-    protocol: http
-    routes:
-      - name: instituciones
-        paths:
-          - /instituciones
-        strip_path: false
-
   - name: usuarios_service
     host: usuarios_upstream
     protocol: http
@@ -29,17 +20,12 @@ services:
         strip_path: false
     
 upstreams:
-  - name: instituciones_upstream
+  - name: usuarios_upstream
     targets:
       - target: 10.128.0.84:8080
         weight: 100
 
-  - name: usuarios_upstream
-    targets:
-      - target: 10.128.0.85:8080
-        weight: 100
-  
   - name: facturas_upstream
     targets:
-      - target: 10.128.0.87:8080
+      - target: 10.128.0.85:8080
         weight: 100
